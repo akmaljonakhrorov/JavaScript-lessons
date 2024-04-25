@@ -46,11 +46,61 @@ Object.prototype.fullName = function () {
 user.fullName()
 */
 //                      prototype ni array bilan qo'llash
-
+/*
 let number = [1,2,3,5,6,7];
 Array.prototype.remove = function(n){
     let res = this.filter((value) => value !== n);
     console.log(res);
 }
 number.remove(1)
+*/
 
+// __proto__ va prototype ni Dave dan you tube dan o'rganish:
+/*
+const person = {
+    alieve: true
+}
+
+const musician = {
+    plays: true
+}
+
+Object.setPrototypeOf(person,musician)
+console.log(Object.getPrototypeOf(musician));
+*/
+
+const car = {
+    doors: 2,
+    seats: "charm",
+    get seatMaterial() {
+        return this.seats;
+    },
+    set seatMaterial(material){
+        this.seats = material;
+    }
+}
+
+const luxuryCar = {};
+
+Object.setPrototypeOf(luxuryCar, car);
+luxuryCar.seatMaterial = "leather";
+/*
+console.log(luxuryCar);
+console.log(luxuryCar.doors);
+console.log(car);
+console.log(luxuryCar.valueOf());*/
+
+            // object ni key larini olish usllari
+// 1 usul, 
+console.log(Object.keys(luxuryCar));
+
+// 2 usul 
+Object.keys(luxuryCar).forEach(key=>{
+    console.log(key);
+})
+
+// 3-usul 
+// for ...in loop includes inherited props
+for(let key in luxuryCar){
+    console.log(key);
+}
