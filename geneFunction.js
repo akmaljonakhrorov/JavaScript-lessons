@@ -86,13 +86,53 @@ const generate = getData();
 console.log(users);
 */
 
-function* getData(param){
-while(true){
-    let gn = yield ++i;
-    if(gn) i += gn; 
+// SAvol: generator function nima uchun kerak? 
+/* JAvob: function ichidagi codelarni navbatma navbat orasida pauza bilan ishlatish uchun kk.
+masalan: */
+
+/*
+ function* generatorFunc(){
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+const generatorObject = generatorFunc();
+const generatorObject2 = generatorFunc();
+console.log(generatorObject.next());
+console.log(generatorObject.next()); 
+ */
+
+
+/* yana bir misol: 
+
+function* genFunction2(){
+    let id = 1;
+    while(true){
+        yield id
+        id++
     }
 }
-const generator = getData();
-console.log(generator.next())
-console.log(generator.next(3))
-console.log(generator.next(4))
+const obj = genFunction2()
+console.log(obj.next());
+*/
+
+/* 2 misol, increment yasash: 
+function* generateFunc(){
+    let id = 1;
+
+    while(true){
+        const increment = yield id;
+
+        if(increment != null){
+            id+=increment
+        }else{
+            ++id
+        }
+    }
+}
+
+let objGen = generateFunc()
+console.log(objGen.next());
+console.log(objGen.next(10));
+*/
